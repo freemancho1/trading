@@ -18,6 +18,26 @@ pip install -r config/sysfiles/requirements.txt
 * crawling.py - 크롤링 관련 파라미터
 * modeling.py - 모델링 관련 파라미터
 * model.py - 모델 관련 파라미터
-* log.py - 로그 관련 파라미
+* log.py - 로그 관련 파라미터
+
+## DBMS
+
+```
+create user 'aaa'*'localhost' identified by 'bbb';
+```
+
+```
+create database mydb default character set utf8 collate utf8_general_ci;
+```
+
+```
+grant all privileges on mydb.* to aaa@localhost;
+grant all privileges on *.* to aaa@localhost;
+flush privileges;
+```
+
+``` 
+show grants for 'aaa'@'localhost';
+```
 
 
