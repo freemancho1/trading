@@ -171,7 +171,7 @@ class ModelInfo(models.Model):
     model_name          = models.CharField('Model Name', max_length=100, null=False)
     com_code            = models.CharField('Company Code', max_length=7, default='000000')
     date                = models.DateField('Training Date', null=False, db_index=True)
-    info                = models.JSONField('Model Create Info', default={})
+    info                = models.JSONField('Model Create Info')
     model_path          = models.CharField('Model File Path', max_length=300, null=False)
     max_value           = models.FloatField('Max Value', null=True)
     accuracy            = models.FloatField('Model Accuracy', null=True)

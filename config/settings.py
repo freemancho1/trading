@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'trading',
         'USER': 'freeman',
         'PASSWORD': 'free4567',
-        'HOST': '127.0.0.1',
-        # 'HOST': 'localhost',   # 에러발생(바로 위 줄과 차이점이 없는데, 원인을 모르겠음)
+        # 'HOST': '127.0.0.1',
+        'HOST': 'localhost',   # 에러발생(바로 위 줄과 차이점이 없는데, 원인을 모르겠음)
         'PORT': '3306',
     }
 }

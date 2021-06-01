@@ -55,8 +55,8 @@ def start_krx_crawling(s_date):
 
 if __name__ == '__main__':
     try:
-        # code_init()
-        # account_init()
-        start_krx_crawling(s_date='20210501')
+        code_init()
+        account_init()
+        # start_krx_crawling(s_date='20210501')
     except Exception as e:
         log.error(e)
