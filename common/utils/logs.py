@@ -116,5 +116,5 @@ class StartEndLogging(object):
     def end(self, msg=None):
         curr_datetime = datetime.now()
         curr_msg = '' if msg is None else msg + ' '
-        Logger.info(f'{self.func_msg} {curr_msg} ended - {curr_datetime}, '
+        Logger.info(f'{self.func_msg} {curr_msg}ended - {curr_datetime}, '
                     f'total processing time: {curr_datetime - self.start}', is_trace=False)

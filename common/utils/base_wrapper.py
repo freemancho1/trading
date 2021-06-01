@@ -4,7 +4,7 @@ from dateutil.parser import parse
 from django.db.models import Max, Min
 
 from config.sysfiles.parameters import *
-from datautils import DataConverter as dc
+from common.utils.datautils import DataConverter as dc
 
 class BaseWrapper:
 
@@ -139,7 +139,7 @@ class BaseWrapper:
                 if is_add_one and not is_min:
                     date = date + timedelta(days=1)
             else:
-                date = parse(BASE_TRADING_DATE)
+                date = parse(BASE_TRADING_DATE).date()
         except Exception as e:
             raise Exception(f'{base_table} get date error!: column_name={date_col}\n{str(e)}')
         return date

@@ -10,7 +10,7 @@ _USER_PATH              = os.path.expanduser('~')
 _PROJECT_NAME           = 'trading'
 _PROJECT_BASE           = os.path.join(_USER_PATH, 'projects')
 _PROJECT_PATH           = os.path.join(_PROJECT_BASE, _PROJECT_NAME)
-_PROJECT_SYSFILE_PATH   = os.path.join(_PROJECT_PATH, 'config', 'sysfile')
+_PROJECT_SYSFILE_PATH   = os.path.join(_PROJECT_PATH, 'config', 'sysfiles')
 
 # DATA PATH
 _DATA_BASE              = os.path.join(_PROJECT_BASE, 'Data')
@@ -32,6 +32,7 @@ CODE_FILE_PATH          = os.path.join(_PROJECT_SYSFILE_PATH, _CODE_FILE_NAME)
 SYSTEM_CODE_TYPE        = '0'
 
 # CRAWLING PARAMETER
+KRX_CRAWLING_URL        = 'http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020101'
 CRAWLING_TIME           = '17:00:00'
 CRAWLING_WAITING_TIME   = 6 if 9 <= int(datetime.now().strftime('%H')) < 16 else 3
 _CRAWLING_PATH          = os.path.join(_DATA_BASE, 'crawling', 'krx')
