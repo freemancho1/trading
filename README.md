@@ -34,4 +34,8 @@ flush privileges;
 show grants for 'aaa'@'localhost';
 ```
 
+## Django
 
+```
+django-admin startapp new-app
+```
