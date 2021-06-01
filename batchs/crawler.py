@@ -2,7 +2,7 @@ import time
 import shutil
 
 from selenium import webdriver
-from datetime import datetime, timedelta
+from datetime import timedelta
 from dateutil.parser import parse
 from tqdm import tqdm
 
