@@ -1,6 +1,5 @@
 import os
 import sys
-import pandas as pd
 
 project_path = os.path.abspath(__file__+'/../..')
 if project_path not in sys.path:
@@ -9,11 +8,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 import django
 django.setup()
 
-from config.sysfiles.parameters import *
-from common.utils.logs import StartEndLogging
-from common.utils.logs import Logger as log
-from common.wrapper import CodeWrapper as ccw
 from stock.wrapper import AccountWrapper as saw
+from stock.save_tables import *
 from batchs.crawler import KrxCrawler
 
 
@@ -53,10 +49,18 @@ def start_krx_crawling(s_date):
     skc.start_crawler()
 
 
+def save_tables():
+    save_marketdata_from_crawler()
+    save_company_from_marketdata()
+    save_modelingdata_from_marketdata()
+
+
 if __name__ == '__main__':
     try:
-        code_init()
-        account_init()
-        # start_krx_crawling(s_date='20210501')
+        # code_init()
+        # account_init()
+        # start_krx_crawling(s_date='all')   # 최초 한달 데이터 크롤링 함
+        save_tables()
     except Exception as e:
         log.error(e)
+    print('program ended.')

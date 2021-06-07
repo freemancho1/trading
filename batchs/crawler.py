@@ -50,7 +50,7 @@ class KrxCrawler(object):
         self._is_start, self._is_stop = True, False
         self._is_insert = is_insert
 
-    def start_crawler(self, is_disp_processing_step=False):
+    def start_crawler(self, is_disp_processing_step=True):
         se_check = StartEndLogging()
 
         about_period_months = int((self._e_date - self._s_date).days / 30) + 2

@@ -28,7 +28,7 @@ class CompanyWrapper:
 
     @staticmethod
     def get_all():
-        return bw.gets(Company)
+        return bw.gets(Company, 'com_code')
 
     @staticmethod
     def get_company(com_code):
@@ -51,7 +51,11 @@ class MarketDataWrapper:
 
     @staticmethod
     def get_all():
-        return bw.gets(MarketData)
+        return bw.gets(MarketData, 'com_code', 'date')
+
+    @staticmethod
+    def get_company_datas(com_code):
+        return bw.gets(MarketData, 'date', com_code=com_code)
 
     @staticmethod
     def get_last_date():
@@ -64,6 +68,10 @@ class MarketDataWrapper:
     @staticmethod
     def get_min_date():
         return bw.get_date(MarketData, is_min=True, is_add_one=False)
+
+    @staticmethod
+    def get_last_date_data():
+        return bw.gets(MarketData, 'com_code', date=MarketDataWrapper.get_last_date())
 
     @staticmethod
     def save(datas):
@@ -79,6 +87,10 @@ class ModelingDataWrapper:
     @staticmethod
     def get_all():
         return bw.gets(ModelingData)
+
+    @staticmethod
+    def get_modeling_datas(com_code):
+        return bw.gets(ModelingData, 'date', com_code=com_code)
 
     @staticmethod
     def get_last_date():
@@ -101,11 +113,39 @@ class ModelingDataWrapper:
         bw.delete(ModelingData)
 
 
+class ModelingInfoWrapper:
+
+    @staticmethod
+    def get_last_date():
+        return bw.get_date(ModelingInfo, is_add_one=False)
+
+    @staticmethod
+    def save(datas):
+        bw.save(ModelingInfo, datas)
+
+    @staticmethod
+    def delete_all():
+        bw.delete(ModelingInfo)
+
+
 class ModelInfoWrapper:
 
     @staticmethod
     def get_all():
         return bw.gets(ModelInfo)
+
+    @staticmethod
+    def get_all_last_models():
+        return bw.gets(ModelInfo, 'com_code', date=ModelInfoWrapper.get_last_date())
+
+    @staticmethod
+    def get_predict_models():
+        return bw.gets(ModelInfo, 'accuracy',
+                       date=ModelInfoWrapper.get_last_date())[:DAILY_PREDICT_COUNT]
+
+    @staticmethod
+    def get_last_date():
+        return bw.get_date(ModelInfo, is_add_one=False)
 
     @staticmethod
     def save(datas):

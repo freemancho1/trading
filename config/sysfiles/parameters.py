@@ -67,6 +67,10 @@ TRAIN_DATA_RATIO        = .8
 PRICE_COLUMNS           = ['open', 'low', 'high', 'close']
 MODELING_COLUMNS        = PRICE_COLUMNS + ['volume']
 MODEL_SAVE_PATH         = os.path.join(_DATA_BASE, 'models', _PROJECT_NAME)
+MODEL_SKIP_RATIO        = .5
+
+# PREDICTION PARAMETER
+DAILY_PREDICT_COUNT     = 100
 
 # LSTM MODEL PARAMETER
 LSTM_MODEL_NAME         = 'LSTMClassifier'

@@ -173,7 +173,8 @@ class ModelInfo(models.Model):
     date                = models.DateField('Training Date', null=False, db_index=True)
     info                = models.JSONField('Model Create Info')
     model_path          = models.CharField('Model File Path', max_length=300, null=False)
-    max_value           = models.FloatField('Max Value', null=True)
+    max_price           = models.FloatField('Max Value', null=True)
+    max_volume          = models.FloatField('Max Volume', null=True)
     accuracy            = models.FloatField('Model Accuracy', null=True)
 
     class Meta:
@@ -182,7 +183,7 @@ class ModelInfo(models.Model):
 
     def __init__(self,
                  id, model_name, com_code, date, info, model_path,
-                 max_value=0., accuracy=0.,
+                 max_price=0., max_volume=0., accuracy=0.,
                  *args, **kwargs):
         super(ModelInfo, self).__init__(*args, **kwargs)
 
@@ -192,7 +193,8 @@ class ModelInfo(models.Model):
         self.date       = date
         self.info       = info
         self.model_path = model_path
-        self.max_value  = max_value
+        self.max_price  = max_price
+        self.max_volume = max_volume
         self.accuracy   = accuracy
 
     def __str__(self):
@@ -200,7 +202,7 @@ class ModelInfo(models.Model):
                f'MODEL_NAME={self.model_name}, COM_CODE={self.com_code}, ' \
                f'DATE={self.date}, INFO=[{self.info}], ' \
                f'MODEL_PATH={self.model_path}, ' \
-               f'MAX_VALUE={self.max_value}, ACCURACY={self.accuracy})'
+               f'MAX_PRICE/VOLUME={self.max_price}/{self.max_volume}, ACCURACY={self.accuracy})'
 
 
 class MyTrading(models.Model):
