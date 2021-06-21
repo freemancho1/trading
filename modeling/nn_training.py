@@ -81,7 +81,7 @@ class LstmTraining(object):
         return early_stopping, check_point
 
     def training(self, train_x, train_y):
-        model = lstm(self.kwargs['modeling_info'])
+        model = lstm.model(self.kwargs['modeling_info'])
         self.model_info['info'] = self.kwargs['modeling_info']
         model.fit(train_x, train_y,
                   epochs=self.kwargs['modeling_info']['epochs'],

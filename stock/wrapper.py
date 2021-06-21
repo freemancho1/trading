@@ -28,15 +28,19 @@ class CompanyWrapper:
 
     @staticmethod
     def get_all():
-        return bw.gets(Company, 'com_code')
+        return bw.gets(Company,
+                       'com_code')
 
     @staticmethod
     def get_company(com_code):
-        return bw.get(Company, com_code=com_code)
+        return bw.get(Company,
+                      com_code=com_code)
 
     @staticmethod
     def get_modeling_target():
-        return bw.gets(Company, 'com_code', data_size__gt=MODELING_SKIP_DATA_SIZE)
+        return bw.gets(Company,
+                       'com_code',
+                       data_size__gt=MODELING_SKIP_DATA_SIZE)
 
     @staticmethod
     def save(datas):
@@ -56,6 +60,12 @@ class MarketDataWrapper:
     @staticmethod
     def get_company_datas(com_code):
         return bw.gets(MarketData, 'date', com_code=com_code)
+
+    @staticmethod
+    def get_daily_datas(date):
+        return bw.gets(MarketData,
+                       'date', 'com_code',
+                       date__gt=date)
 
     @staticmethod
     def get_last_date():
@@ -136,16 +146,20 @@ class ModelInfoWrapper:
 
     @staticmethod
     def get_all_last_models():
-        return bw.gets(ModelInfo, 'com_code', date=ModelInfoWrapper.get_last_date())
+        return bw.gets(ModelInfo,
+                       'com_code',
+                       date=ModelInfoWrapper.get_last_date())
 
     @staticmethod
     def get_predict_models():
-        return bw.gets(ModelInfo, 'accuracy',
+        return bw.gets(ModelInfo,
+                       '-accuracy',
                        date=ModelInfoWrapper.get_last_date())[:DAILY_PREDICT_COUNT]
 
     @staticmethod
     def get_last_date():
-        return bw.get_date(ModelInfo, is_add_one=False)
+        return bw.get_date(ModelInfo,
+                           is_add_one=False)
 
     @staticmethod
     def save(datas):
