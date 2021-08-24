@@ -16,7 +16,7 @@ _PROJECT_SYSFILE_PATH   = os.path.join(_PROJECT_PATH, 'config', 'sysfiles')
 _DATA_BASE              = os.path.join(_PROJECT_BASE, 'Data')
 
 # WEB DRIVER PATH
-_WEB_DRIVER_BASE        = os.path.join(_USER_PATH, '.local', 'bin')
+_WEB_DRIVER_BASE        = os.path.join(_DATA_BASE, 'app')
 if 'Windows' in platform.platform():
     WEB_DRIVER_PATH     = os.path.join(_WEB_DRIVER_BASE, 'chromedriver.exe')
 else:

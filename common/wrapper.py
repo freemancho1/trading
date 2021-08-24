@@ -69,3 +69,22 @@ class CodeWrapper:
     @staticmethod
     def delete_all():
         bw.delete(Code)
+
+
+class UserWrapper:
+
+    @staticmethod
+    def get(id):
+        return bw.get(User, id=id)
+
+    @staticmethod
+    def get_active_user(name):
+        return bw.get(User, username=name, is_active=True)
+
+    @staticmethod
+    def save(datas):
+        bw.save(User, datas)
+
+    @staticmethod
+    def delete_all():
+        bw.delete(User)

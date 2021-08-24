@@ -1,0 +1,10 @@
+{% load static %}
+<html lang="en">
+<script type="text/javascript">
+    top.location = "{% if is_login %}" +
+                       "{% url 'common:main' %}" +
+                   "{% else %}" +
+                       "{% url 'common:login' %}" +
+                   "{% endif %}"
+</script>
+</html>

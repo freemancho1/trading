@@ -14,7 +14,7 @@ from stock.wrapper import ModelingDataWrapper as smldw
 from stock.wrapper import MarketDataWrapper as smdw
 
 
-def save_marketdata_from_crawler(is_delete=True):
+def save_marketdata_from_crawler(is_delete=False):
 
     market_type_dict = ccw.get_name_to_code_dict(c_type='A')
 
@@ -35,7 +35,9 @@ def save_marketdata_from_crawler(is_delete=True):
     se = StartEndLogging('save marketdata from crawler')
 
     if is_delete:
+        log.debug('marketdata delete all start!.')
         smdw.delete_all()
+        log.debug('marketdata delete all end!.')
 
     for file_name in tqdm(sorted(os.listdir(CRAWLING_TARGET_PATH))):
         file_processing(file_name)
@@ -49,7 +51,9 @@ def save_company_from_marketdata(is_delete=True):
     se = StartEndLogging('save company from market data')
 
     if is_delete:
+        log.debug('company delete all start!.')
         scw.delete_all()
+        log.debug('company delete all end!.')
 
     market_qs = smdw.get_last_date_data()
     log.debug(f'select date: {smdw.get_last_date()}, market_qs size: {len(market_qs)}')
@@ -67,7 +71,9 @@ def save_modelingdata_from_marketdata(is_delete=True):
     se = StartEndLogging('save modeling data from market data')
 
     if is_delete:
+        log.debug('marketdata delete all start!.')
         smldw.delete_all()
+        log.debug('marketdata delete all end!.')
 
     company_qs = scw.get_all()
     market_qs = smdw.get_all()

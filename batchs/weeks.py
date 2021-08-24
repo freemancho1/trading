@@ -23,9 +23,9 @@ def start_krx_crawling():
 
 
 def update_tables():
-    # save_marketdata_from_crawler(is_delete=False)
-    save_company_from_marketdata(is_delete=True)
-    save_modelingdata_from_marketdata(is_delete=True)
+    save_marketdata_from_crawler()
+    save_company_from_marketdata()
+    save_modelingdata_from_marketdata()
 
 
 def weekly_modeling():
@@ -53,5 +53,9 @@ def weekly_modeling():
 
 
 if __name__ == '__main__':
-    update_tables()
-    weekly_modeling()
+    try:
+        start_krx_crawling()
+        update_tables()
+    except Exception as e:
+        log.error(e)
+    print('program ended.')

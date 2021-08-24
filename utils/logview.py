@@ -8,12 +8,13 @@ LOG_FILE_PATH = os.path.join(os.path.expanduser('~'),
 
 END = '\033[0m'
 COLOR = {
-    'CRITICAL' : '\033[91m',
-    '   ERROR' : '\033[31m',
-    ' WARNING' : '\033[95m',
-    '    INFO' : '\033[93m',
-    '   DEBUG' : '\033[37m',
+    'CRITICAL': '\033[91m',
+    '   ERROR': '\033[31m',
+    ' WARNING': '\033[95m',
+    '    INFO': '\033[93m',
+    '   DEBUG': '\033[37m',
 }
+
 
 def log_print(log):
     log_color = COLOR['   DEBUG']
@@ -21,6 +22,7 @@ def log_print(log):
         if key in log:
             log_color = COLOR[key]
     print(log_color + log + END)
+
 
 class ReadLog(threading.Thread):
     def run(self, *args):
@@ -37,6 +39,7 @@ class ReadLog(threading.Thread):
                     f.seek(where)
                 else:
                     log_print(line[:-1])
+
 
 def main():
     log = ReadLog()
